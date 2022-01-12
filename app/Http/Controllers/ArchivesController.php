@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Archives;
 
-class ArchiveController extends Controller
+class ArchivesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,6 +14,8 @@ class ArchiveController extends Controller
      */
     public function index()
     {
+        $Archives = Archives::all();
+        return view('archives.index', compact('Archives'));
         //
     }
 
@@ -23,6 +26,7 @@ class ArchiveController extends Controller
      */
     public function create()
     {
+        return view("archives.create");
         //
     }
 
@@ -34,6 +38,28 @@ class ArchiveController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            "title"=>"require|min:3",
+            "description"=>"require|min:20",
+            "price"=>"require|numbers"
+
+        ]);
+        $data = $request->all();
+
+
+        $newComic= new Archives();
+        $newComic->fill($data);
+      /*   $newComic->title = $data['title'];
+        $newComic->description=$data['description'];
+        $newComic->thumb=$data['thumb'];
+        $newComic->price=$data['price'];
+        $newComic->series=$data['series'];
+        $newComic->sale_date=$data['sale_date'];
+        $newComic->type=$data['type']; */
+        $newComic->save();
+
+        return redirect()->route("Archives.show", $newComic->id);
+      /*   return $newComic; */
         //
     }
 
@@ -45,8 +71,16 @@ class ArchiveController extends Controller
      */
     public function show($id)
     {
+        $Archives = Archives::findOrFail($id);
+
+        return view("archives.show", compact("Archives"));
         //
     }
+   /*  public function show(Archives $Archives)
+    {
+        return view("archives.show", compact("Archives"));
+        //
+    } */
 
     /**
      * Show the form for editing the specified resource.

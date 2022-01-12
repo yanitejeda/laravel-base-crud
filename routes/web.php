@@ -18,4 +18,4 @@ Route::get('/', function () {
 });
 
 
-Route::resource("Archive", "ArchiveController");
+Route::resource("Archives", "ArchivesController");
