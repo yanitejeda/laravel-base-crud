@@ -90,6 +90,8 @@ class ArchivesController extends Controller
      */
     public function edit($id)
     {
+       /*  $Archives = Archives::findOrFaild($id);
+        return view("Archives.edit", compact("Archives")); */
         //
     }
 
