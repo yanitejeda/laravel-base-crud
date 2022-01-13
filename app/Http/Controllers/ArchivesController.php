@@ -90,9 +90,10 @@ class ArchivesController extends Controller
      */
     public function edit($id)
     {
-       /*  $Archives = Archives::findOrFaild($id);
-        return view("Archives.edit", compact("Archives")); */
-        //
+         $Archives = Archives::findOrFail($id);
+                                            /* nome variabile senza $ */
+        return view("archives.edit", compact("Archives"));
+        
     }
 
     /**
@@ -104,6 +105,12 @@ class ArchivesController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $Archives = Archives::findOrFail($id);
+        $formDc = $request->all();
+
+        $Archives->update($formDc);
+        return redirect()->route("Archives.update",$Archives->id);
+      //  return redirect()->route("Archives.show", $newComic->id);
         //
     }
 

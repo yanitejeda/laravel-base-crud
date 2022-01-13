@@ -19,6 +19,7 @@
                     <h6 class="card-title">{{ $archive->type }}</h6>
                    {{--  <p class="card-text">{{ $archive->description}}</p> --}}
                     <a href="#" class="btn btn-primary">link</a>
+                    <a href="{{route('Archives.edit', $archive->id)}}" class="btn btn-primary">modifica</a>
                 </div>
             </div>
 
