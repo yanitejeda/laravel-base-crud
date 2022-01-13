@@ -110,7 +110,6 @@ class ArchivesController extends Controller
 
         $Archives->update($formDc);
         return redirect()->route("Archives.update",$Archives->id);
-      //  return redirect()->route("Archives.show", $newComic->id);
         //
     }
 
@@ -122,6 +121,8 @@ class ArchivesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $Archives = Archives::findOrFail($id);
+        $Archives->delete();
+        return redirect()->route('Archives.index');
     }
 }
