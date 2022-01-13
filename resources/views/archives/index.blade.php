@@ -17,19 +17,21 @@
                     <h6 class="card-title">{{ $archive->series }}</h6>
                     <h6 class="card-title">{{ $archive->sale_date }}</h6>
                     <h6 class="card-title">{{ $archive->type }}</h6>
-                   {{--  <p class="card-text">{{ $archive->description}}</p> --}}
+                    {{-- <p class="card-text">{{ $archive->description}}</p> --}}
                     <div class="d-flex justify-content-evenly">
 
+                        <a href="{{ route('Archives.show', $archive->id) }}" class="btn btn-light">mostra</a>
+                        <a href="{{ route('Archives.edit', $archive->id) }}" class="btn btn-light">modifica</a>
                         <a>
-                            <form action="{{route('Archives.destroy', $archive->id)}}" method="post">
-                             @csrf
-                             @method('delete')
-                             <button  class="btn btn-danger" type="submit" value="Cancella">elimina</button>
-                             </form>
+                            <form action="{{ route('Archives.destroy', $archive->id) }}" method="post">
+                                @csrf
+                                @method('delete')
+                                <button class="btn btn-danger" type="submit" value="Cancella">elimina</button>
+                            </form>
                         </a>
-                         <a href="{{route('Archives.edit', $archive->id)}}" class="btn btn-success">modifica</a>
+
                     </div>
-                    </div>
+                </div>
             </div>
 
 
