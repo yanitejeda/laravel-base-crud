@@ -1,5 +1,7 @@
 @extends('layouts.default')
 @section('title_page', 'archivio fumetti')
+@include('partials.navbar')
+
 
 
 @section('content')
