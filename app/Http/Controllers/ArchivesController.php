@@ -121,8 +121,8 @@ class ArchivesController extends Controller
      */
     public function destroy($id)
     {
-        $Archives = Archives::findOrFail($id);
-        $Archives->delete();
+        $SingleComic = Archives::findOrFail($id);
+        $SingleComic->delete();
         return redirect()->route('Archives.index');
     }
 }
